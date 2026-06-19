@@ -17,7 +17,7 @@ module.exports = {
         PM2_SERVE_PATH: path.join(__dirname, "dist"),
         PM2_SERVE_PORT: process.env.PORT || 3000,
         PM2_SERVE_SPA: "true",
-        PM2_SERVE_HOMEPAGE: "index.html",
+        PM2_SERVE_HOMEPAGE: "/index.html",
       },
     },
   ],
