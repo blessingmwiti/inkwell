@@ -225,13 +225,13 @@ async function readRegion(
   region: { x: number; y: number; width: number; height: number },
 ) {
   const targetHeight = 48;
-  const targetWidth = 320;
-  const contentWidth = Math.min(targetWidth, Math.max(8, Math.round((region.width / region.height) * targetHeight)));
+  const contentWidth = Math.max(8, Math.round((region.width / region.height) * targetHeight));
+  const targetWidth = Math.min(3200, Math.max(160, Math.ceil(contentWidth / 32) * 32));
   const canvas = new OffscreenCanvas(targetWidth, targetHeight);
   const ctx = canvas.getContext("2d", { willReadFrequently: true })!;
   ctx.fillStyle = "white";
   ctx.fillRect(0, 0, targetWidth, targetHeight);
-  ctx.drawImage(image, region.x, region.y, region.width, region.height, 0, 0, contentWidth, targetHeight);
+  ctx.drawImage(image, region.x, region.y, region.width, region.height, 0, 0, Math.min(contentWidth, targetWidth), targetHeight);
   const pixels = ctx.getImageData(0, 0, targetWidth, targetHeight);
   const tensor = imageToTensor(pixels, [0.5, 0.5, 0.5], [0.5, 0.5, 0.5]);
   const output = await recSession!.run({ [recSession!.inputNames[0]]: tensor });
