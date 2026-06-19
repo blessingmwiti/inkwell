@@ -111,7 +111,7 @@ pnpm add --global pm2
 Build and start or reload the application:
 
 ```bash
-pnpm deploy
+pnpm run deploy
 ```
 
 The production server uses port `3000` by default. Override it with:
