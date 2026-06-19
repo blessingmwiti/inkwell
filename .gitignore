@@ -1,0 +1,31 @@
+# Dependencies and build output
+dist/
+node_modules/
+
+# Build and tool caches
+*.tsbuildinfo
+.vite/
+.cache/
+coverage/
+
+# Local environment files
+.env
+.env.*
+!.env.example
+
+# Logs and runtime state
+*.log
+logs/
+pids/
+*.pid
+*.pid.lock
+
+# Editor settings
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Operating system files
+.DS_Store
+Thumbs.db
